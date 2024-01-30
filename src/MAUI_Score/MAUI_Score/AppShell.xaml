@@ -6,9 +6,20 @@
     xmlns:local="clr-namespace:MAUI_Score"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+
+        <Tab Title="Home">
+            <ShellContent Route="ScoresPage" ContentTemplate="{DataTemplate local:Home}" />
+        </Tab>
+
+        <Tab Title="Create Match">
+            <ShellContent Route="PlayersPage" ContentTemplate="{DataTemplate local:Match}" />
+        </Tab>
+
+        <Tab Title="Create Player and teams">
+            <ShellContent Route="GamesPage" ContentTemplate="{DataTemplate local:Player}" />
+        </Tab>
+
+    </TabBar>
 
 </Shell>
