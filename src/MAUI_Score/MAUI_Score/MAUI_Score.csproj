@@ -53,8 +53,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\Match.xaml.cs">
+	    <DependentUpon>Match.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Player.xaml.cs">
+	    <DependentUpon>Player.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Home.xaml.cs">
+	    <DependentUpon>Home.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="View\Match.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Player.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="Models\" />
-	  <Folder Include="Helpers\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="ViewModels\" />
 	  <Folder Include="Views\" />
