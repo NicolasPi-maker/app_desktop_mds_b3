@@ -4,9 +4,13 @@
     {
         int count = 0;
 
-        public Player()
+        public Player(int v)
         {
             InitializeComponent();
+        }
+
+        public Player(int v, string v1, string v2, object value, float v3, int v4) : this(v)
+        {
         }
 
         private void OnCounterClicked(object sender, EventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MAUI_Score.Datas
 {
-    internal class Class1
+    internal class MatchDataManager
     {
     }
 }
