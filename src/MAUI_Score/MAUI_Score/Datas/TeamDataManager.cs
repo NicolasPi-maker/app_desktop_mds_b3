@@ -1,4 +1,5 @@
-﻿using MAUI_Score.Models;
+﻿using Java.Util.Functions;
+using MAUI_Score.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,42 +8,51 @@ using System.Threading.Tasks;
 
 namespace MAUI_Score.Datas
 {
-    public class TeamDataManager
+    public class TeamDataManager : Interfaces.DataManagerInterface<Team>
     {
         private List<Team> teams = new List<Team>();
 
         public TeamDataManager() 
-        {
-            teams.Add(new Team(1, "Team1", new List<Models.Player>(), new List<Game>(), 0, 0));
-            teams.Add(new Team(2, "Team2", new List<Models.Player>(), new List<Game>(), 0, 0));
-            teams.Add(new Team(3, "Team3", new List<Models.Player>(), new List<Game>(), 0, 0));
-            teams.Add(new Team(4, "Team4", new List<Models.Player>(), new List<Game>(), 0, 0));
-        }
+        {}
 
-        public List<Team> GetTeams()
+        public List<Team> GetAll()
         {
             return teams;
         }
 
-        public Team GetTeamById(int id)
+        public Team GetById(int id)
         {
             return teams.Find(x => x.id == id);
         }
 
-        public void AddTeam(Team team)
+        public void Add(Team team)
         {
             teams.Add(team);
         }
 
-        public void UpdateTeam(Team team)
+        public bool Update(Team team)
         {
             Team teamToUpdate = teams.Find(x => x.id == team.id);
             teamToUpdate = team;
+            return true;
         }
 
-        public void DeleteTeam(int id)
+        public bool Delete(int id)
         {
             teams.Remove(teams.Find(x => x.id == id));
+            return true;
+        }
+
+        public void AddPlayerToTeam(int teamId, Models.Player player)
+        {
+            Team team = teams.Find(x => x.id == teamId);
+            team.members.Add(player);
+        }
+
+        public void RemovePlayerFromTeam(int teamId, int playerId)
+        {
+            Team team = teams.Find(x => x.id == teamId);
+            team.members.Remove(team.members.Find(x => x.id == playerId));
         }
     }
 }

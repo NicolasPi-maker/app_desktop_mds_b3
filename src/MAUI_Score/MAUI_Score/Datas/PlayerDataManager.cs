@@ -6,40 +6,37 @@ using System.Threading.Tasks;
 
 namespace MAUI_Score.Datas
 {
-    public class PlayerDataManager
+    public class PlayerDataManager : Interfaces.DataManagerInterface<Models.Player>
     {
         private List<Models.Player> players { get; set; }
 
         public PlayerDataManager()
-        {
-            players.Add(new Models.Player(1, "John", "JohnDoe", null, 0.5f, 10));
-            players.Add(new Models.Player(2, "Jane", "JaneDoe", null, 0.6f, 15));
-            players.Add(new Models.Player(3, "Jack", "JackDoe", null, 0.7f, 20));
-            players.Add(new Models.Player(4, "Jill", "JillDoe", null, 0.8f, 25));
-        }
+        {}
 
-        public void addPlayer(Models.Player player)
+        public void Add(Models.Player player)
         {
             players.Add(player);
         }
 
-        public void removePlayer(Models.Player player)
+        public bool Delete(int id)
         {
-            players.Remove(player);
+            players.Remove(players.Find(p => p.id == id));
+            return true;
         }
 
-        public void updatePlayer(Models.Player player)
+        public bool Update(Models.Player player)
         {
             Models.Player playerToUpdate = players.Find(p => p.id == player.id);
             playerToUpdate = player;
+            return true;
         }
 
-        public Models.Player getPlayerById(int id)
+        public Models.Player GetById(int id)
         {
             return players.Find(p => p.id == id);
         }
 
-        public List<Models.Player> getPlayers()
+        public List<Models.Player> GetAll()
         {
             return players;
         }   
