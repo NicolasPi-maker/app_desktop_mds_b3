@@ -12,7 +12,7 @@ namespace MAUI_Score.Interfaces
         void Add(T item);
         bool Update(T item);
         bool Delete(int id);
-        List<T> GetAll();
+        IEnumerable<T> GetAll();
         T GetById(int id);
     }
 }
