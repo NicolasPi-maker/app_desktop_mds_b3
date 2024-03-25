@@ -5,34 +5,94 @@
              x:Class="MAUI_Score.Home">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <Grid Padding="30"
+          RowDefinitions="Auto, Auto, Auto, Auto"
+          ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto">
 
-            
+            <Label Text="Tableau des scores"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="7"
+               FontSize="36"
+               FontFamily="Inter"
+               VerticalOptions="Start"
+               HorizontalOptions="Start" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+            <Button Text="Par joueurs"
+                Grid.Row="1"
+                Grid.Column="0" 
+                BackgroundColor="Purple"
+                TextColor="White"/>
+            <Button Text="Par équipes"
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="Purple"
+                TextColor="White" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <SearchBar Placeholder="Rechercher..."
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="FillAndExpand"/>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <Picker Grid.Row="1"
+                Grid.Column="4"
+                HorizontalOptions="End"/>
+            <DatePicker Grid.Row="1"
+                    Grid.Column="5"
+                    HorizontalOptions="End"
+                    Format="dd/MM/yyyy" />
 
-        </VerticalStackLayout>
+            <BoxView Grid.Row="2"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="7"
+                 HeightRequest="2"
+                 Margin="0,20,0,20"
+                 VerticalOptions="End"/>
+
+            <Label Text="Date"
+               Grid.Row="3"
+               Grid.Column="0"
+               FontFamily="Inter"
+               HorizontalOptions="Start"/>
+            <Label Text="Team / Joueurs"
+               Grid.Row="3"
+               Grid.Column="2"
+               FontFamily="Inter"
+               HorizontalOptions="Start"/>
+            <Label Text="0"
+               Grid.Row="3"
+               Grid.Column="2"
+               Background="Pink"
+               FontFamily="Inter"
+               Padding="15,10,15,10"
+               Margin="0,0,50,0"
+               HorizontalOptions="Center"/>
+            <Label Text="2"
+               Grid.Row="3"
+               Grid.Column="2"
+               Background="Aquamarine"
+               Padding="15,10,15,10"
+               FontFamily="Inter"
+               Margin="50,0,0,0"
+               HorizontalOptions="Center"/>
+            <Label Text="Team / Joueurs"
+                Grid.Row="3"
+                Grid.Column="2"
+                FontFamily="Inter"
+                Margin="0,0,20,0"
+                HorizontalOptions="End"/>
+            <Label Text="Compétition"
+                Grid.Row="3"
+                Grid.Column="5"
+                FontFamily="Inter"
+                HorizontalOptions="Start"/>
+            <Label Text="Jeu"
+                Grid.Row="3"
+                Grid.Column="7"
+                FontFamily="Inter"
+                HorizontalOptions="End"/>
+        </Grid>
     </ScrollView>
 
 </ContentPage>
