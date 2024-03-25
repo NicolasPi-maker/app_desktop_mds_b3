@@ -23,7 +23,7 @@ namespace MAUI_Score.Models
             this.description = description;
         }
 
-        public Game createGame(int id, string name, string type, string description)
+        public Game createGame(int id, string name, GameType type, string description)
         {
             return new Game(id, name, type, description);
         }
