@@ -2,9 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Hosting;
 using MAUI_Score.Models;
-using MAUI_Score.Services;
 using MAUI_Score.Interfaces;
 using MAUI_Score.ViewModels;
+using MAUI_Score.Services.ModelServices;
+using MAUI_Score.Services.DataServices;
 
 namespace MAUI_Score
 {

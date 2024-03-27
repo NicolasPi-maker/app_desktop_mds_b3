@@ -1,6 +1,6 @@
 ﻿using MAUI_Score.Interfaces;
 
-namespace MAUI_Score.Services
+namespace MAUI_Score.Services.ModelServices
 {
     public class MatchService
     {

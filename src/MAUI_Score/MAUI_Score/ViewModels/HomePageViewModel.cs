@@ -1,5 +1,6 @@
-﻿using MAUI_Score.Models;
-using MAUI_Score.Services;
+﻿using MAUI_Score.Helpers;
+using MAUI_Score.Models;
+using MAUI_Score.Services.ModelServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,13 @@ namespace MAUI_Score.ViewModels
             _gameService.AddGame(new Game(3, "Starcraft II", Enum.GameType.RTS, "StarCraft II est un jeu vidéo de stratégie en temps réel développé et édité par Blizzard Entertainment."));
             _gameService.DeleteGame(1);
             _gameService.UpdateGame(new Game(2, "Counter-Stroke: Global Deffensive", Enum.GameType.RTS, "Pas de description"));
+            List<Game> datas = _gameService.GetAllGames().ToList();
+            List<Game> filteredDatas = DataFilterHelper.FilterByProperty(datas, x => x.type, Enum.GameType.FPS).ToList();
+            foreach (Game data in filteredDatas)
+            {
+                _gameService.AddGame(data);
+            }
+           // List<Game> searchedDatas = DataFilterHelper.FilterBySearch(datas, x => x.description, "Valve").ToList();
         }
     }
 }

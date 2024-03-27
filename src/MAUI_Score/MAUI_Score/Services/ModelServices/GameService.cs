@@ -1,7 +1,7 @@
 ﻿using MAUI_Score.Interfaces;
 using MAUI_Score.Models;
 
-namespace MAUI_Score.Services
+namespace MAUI_Score.Services.ModelServices
 {
     public class GameService
     {

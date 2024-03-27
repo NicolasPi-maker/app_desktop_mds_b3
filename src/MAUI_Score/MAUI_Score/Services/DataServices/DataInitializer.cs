@@ -1,7 +1,8 @@
 ﻿using MAUI_Score.Interfaces;
 using MAUI_Score.Models;
+using MAUI_Score.Services.ModelServices;
 
-namespace MAUI_Score.Services
+namespace MAUI_Score.Services.DataServices
 {
     public class DataInitializer
     {
@@ -42,9 +43,9 @@ namespace MAUI_Score.Services
 
         public void InitMatchDatas()
         {
-            _matchService.AddMatch(new Models.Match(1,_teamService.GetTeamById(1), _teamService.GetTeamById(2), _gameService.GetGameById(1), new DateTime(2022, 10, 11), _teamService.GetTeamById(1), 10, 5, "test", null , null));
-            _matchService.AddMatch(new Models.Match(2,_teamService.GetTeamById(3), _teamService.GetTeamById(4), _gameService.GetGameById(2), new DateTime(2022, 10, 12), _teamService.GetTeamById(3), 10, 5, "test", null , null));
-            _matchService.AddMatch(new Models.Match(3,_teamService.GetTeamById(1), _teamService.GetTeamById(3), _gameService.GetGameById(3), new DateTime(2022, 10, 13), _teamService.GetTeamById(1), 10, 5, "test", null , null));
+            _matchService.AddMatch(new Models.Match(1, _teamService.GetTeamById(1), _teamService.GetTeamById(2), _gameService.GetGameById(1), new DateTime(2022, 10, 11), _teamService.GetTeamById(1), 10, 5, "test", null, null));
+            _matchService.AddMatch(new Models.Match(2, _teamService.GetTeamById(3), _teamService.GetTeamById(4), _gameService.GetGameById(2), new DateTime(2022, 10, 12), _teamService.GetTeamById(3), 10, 5, "test", null, null));
+            _matchService.AddMatch(new Models.Match(3, _teamService.GetTeamById(1), _teamService.GetTeamById(3), _gameService.GetGameById(3), new DateTime(2022, 10, 13), _teamService.GetTeamById(1), 10, 5, "test", null, null));
         }
 
     }

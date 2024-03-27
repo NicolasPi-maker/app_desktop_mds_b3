@@ -4,7 +4,7 @@ using System.Drawing.Printing;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace MAUI_Score.Services
+namespace MAUI_Score.Services.ModelServices
 {
     public class DataManager<T> : DataManagerInterface<T> where T : class
     {
@@ -12,7 +12,7 @@ namespace MAUI_Score.Services
         private static readonly List<T> _items = new List<T>();
         private static int _nextId = 1;
 
-        public DataManager(string dataFile) 
+        public DataManager(string dataFile)
         {
             _dataFile = dataFile;
         }
@@ -30,7 +30,7 @@ namespace MAUI_Score.Services
 
         public IEnumerable<T> GetAll()
         {
-           return GetDatasFromJson();
+            return GetDatasFromJson();
         }
 
         public T GetById(int id)
