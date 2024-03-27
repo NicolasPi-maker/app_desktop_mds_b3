@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MAUI_Score.Interfaces
 {
-    internal interface DataManagerInterface<T>
+    public interface DataManagerInterface<T>
     {
         void Add(T item);
         bool Update(T item);

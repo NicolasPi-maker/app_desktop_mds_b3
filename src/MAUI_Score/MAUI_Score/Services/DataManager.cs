@@ -1,48 +1,52 @@
 ﻿using MAUI_Score.Interfaces;
-using MAUI_Score.Models;
-using MAUI_Score.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Drawing.Printing;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MAUI_Score.Services
 {
     public class DataManager<T> : DataManagerInterface<T> where T : class
     {
+        private string _dataFile = "";
         private static readonly List<T> _items = new List<T>();
         private static int _nextId = 1;
 
-        private DataManager() { }
-
-        public static DataManager<T> GetInstance()
+        public DataManager(string dataFile) 
         {
-            return new DataManager<T>();
+            _dataFile = dataFile;
         }
 
         public void Add(T item)
         {
             typeof(T).GetProperty("id")?.SetValue(item, _nextId++);
-            _items.Add(item);
+
+            List<T> datas = GetDatasFromJson();
+            datas.Add(item);
+
+            string jsonData = JsonConvert.SerializeObject(datas, Formatting.Indented);
+            File.WriteAllText(_dataFile, jsonData);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _items;
+           return GetDatasFromJson();
         }
 
         public T GetById(int id)
         {
-            return _items.Find(item => (int)typeof(T).GetProperty("id")?.GetValue(item) == id);
+            List<T> datas = GetDatasFromJson();
+            return datas.Find(item => (int)typeof(T).GetProperty("id")?.GetValue(item) == id);
         }
 
         public bool Update(T item)
         {
-            int index = _items.FindIndex(existingItem => (int)typeof(T).GetProperty("id")?.GetValue(existingItem) == (int)typeof(T).GetProperty("id")?.GetValue(item));
+            List<T> datas = GetDatasFromJson();
+            int index = datas.FindIndex(item => (int)typeof(T).GetProperty("id")?.GetValue(item) == (int)typeof(T).GetProperty("id")?.GetValue(item));
             if (index != -1)
             {
-                _items[index] = item;
+                datas[index] = item;
+                UpdateJsonFile(datas);
                 return true;
             }
             return false;
@@ -50,35 +54,34 @@ namespace MAUI_Score.Services
 
         public bool Delete(int id)
         {
-            T itemToRemove = GetById(id);
+            List<T> datas = GetDatasFromJson();
+            T itemToRemove = datas.Find(item => (int)typeof(T).GetProperty("id")?.GetValue(item) == id);
             if (itemToRemove != null)
             {
-                _items.Remove(itemToRemove);
+                datas.Remove(itemToRemove);
+                UpdateJsonFile(datas);
                 return true;
             }
             return false;
         }
-    }
-}
 
-public class UserService
-{
-    private readonly DataManagerInterface<Game> _gameRepository;
-
-    public UserService(DataManagerInterface<Game> gameRepository)
-    {
-        _gameRepository = gameRepository;
-    }
-
-    public void Add(Game game)
-    {
-        if (game == null)
+        public List<T> GetDatasFromJson()
         {
-            throw new ArgumentNullException(nameof(game));
+            List<T> datas = new List<T>();
+
+            if (File.Exists(_dataFile))
+            {
+                string jsonData = File.ReadAllText(_dataFile);
+                datas = JsonConvert.DeserializeObject<List<T>>(jsonData);
+            }
+
+            return datas;
         }
-        else
+
+        public void UpdateJsonFile(List<T> datas)
         {
-            _gameRepository.Add(game);
+            string jsonData = JsonConvert.SerializeObject(datas, Formatting.Indented);
+            File.WriteAllText(_dataFile, jsonData);
         }
     }
 }
