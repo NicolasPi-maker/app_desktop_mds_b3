@@ -1,4 +1,5 @@
-﻿namespace MAUI_Score
+
+namespace MAUI_Score
 {
     public partial class Player : ContentPage
     {
