@@ -60,9 +60,11 @@
                                           Tapped="OnScoreTapped"/>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal"
-                             Spacing="100">
+                             Spacing="50"
+                             Padding="200,0,0,0">
                     <Label Text="Date"
                            FontFamily="Inter"
+                           Margin="0,0,50,0"
                            HorizontalOptions="Start"/>
                     <Label Text="Team / Joueurs"
                            FontFamily="Inter"
@@ -81,10 +83,7 @@
                            HorizontalOptions="Center"/>
                     <Label Text="Team / Joueurs"
                            FontFamily="Inter"
-                           Margin="0,0,20,0"
-                           HorizontalOptions="End"/>
-                    <Label Text="Compétition"
-                           FontFamily="Inter"
+                           Margin="0,0,50,0"
                            HorizontalOptions="End"/>
                     <Label Text="Jeu"
                            FontFamily="Inter"
@@ -93,39 +92,35 @@
             </Frame>
 
             <StackLayout x:Name="DetailsSection"
-                         IsVisible="False"
-                         Grid.Row="4"
-                         Grid.Column="0"
-                         Grid.ColumnSpan="7">
+             Orientation="Horizontal"
+             IsVisible="False"
+             Grid.Row="4"
+             Grid.Column="0"
+             Grid.ColumnSpan="7">
                 <Frame BorderColor="Black">
-                    <StackLayout Orientation="Horizontal"
-                                 Spacing="100">
-                        <StackLayout Orientation="Vertical"
-                                     Spacing="100">
+                        <StackLayout Spacing="10">
                             <Label Text="#22"
-                                   FontSize="Large"
-                                   FontFamily="Inter"
-                                   Padding="5"/>
+                       FontSize="Medium"
+                       FontFamily="Inter"
+                       Padding="5"/>
                             <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
-                                   FontFamily="Inter"
-                                   Padding="5"/>
-                            <Label Text="60% - 40%"
-                                   FontFamily="Inter"
-                                   Padding="5"
-                                   HorizontalTextAlignment="Center"/>
+                       FontFamily="Inter"
+                       Padding="5"/>
                         </StackLayout>
-                        <StackLayout Orientation="Vertical"
-                                     Spacing="100">
+                    </Frame>
+                    <Frame BorderColor="Black">
+                        <StackLayout Spacing="10">
                             <Label Text="#22"
-                                   FontSize="Large"
-                                   FontFamily="Inter"
-                                   Padding="5"/>
+                       HorizontalOptions="End"
+                       FontSize="Medium"
+                       FontFamily="Inter"
+                       Padding="5"/>
                             <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
-                                   FontFamily="Inter"
-                                   Padding="5"/>
+           FontFamily="Inter"         
+           Padding="5"/>
+
                         </StackLayout>
-                    </StackLayout>
-                </Frame>
+                    </Frame>
             </StackLayout>
 
         </Grid>
