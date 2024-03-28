@@ -17,7 +17,6 @@
                    FontFamily="Inter"
                    VerticalOptions="Start"
                    HorizontalOptions="Start" />
-
             <Button Text="Par joueurs"
                     Grid.Row="1"
                     Grid.Column="0"
@@ -91,37 +90,54 @@
                 </StackLayout>
             </Frame>
 
-            <StackLayout x:Name="DetailsSection"
-             Orientation="Horizontal"
-             IsVisible="False"
-             Grid.Row="4"
-             Grid.Column="0"
-             Grid.ColumnSpan="7">
-                <Frame BorderColor="Black">
-                        <StackLayout Spacing="10">
-                            <Label Text="#22"
-                       FontSize="Medium"
-                       FontFamily="Inter"
-                       Padding="5"/>
-                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
-                       FontFamily="Inter"
-                       Padding="5"/>
-                        </StackLayout>
-                    </Frame>
-                    <Frame BorderColor="Black">
-                        <StackLayout Spacing="10">
-                            <Label Text="#22"
-                       HorizontalOptions="End"
-                       FontSize="Medium"
-                       FontFamily="Inter"
-                       Padding="5"/>
-                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
-           FontFamily="Inter"         
-           Padding="5"/>
+            <Grid
+                x:Name="DetailsSection"
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                        </StackLayout>
-                    </Frame>
-            </StackLayout>
+                <Frame Grid.Column="0"
+           BorderColor="Black">
+                    <StackLayout Spacing="10">
+                        <Label Text="#22"
+                   FontSize="Medium"
+                   FontFamily="Inter"
+                   Padding="5"/>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label HorizontalOptions="FillAndExpand" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
+                            FontFamily="Inter"
+                            Padding="5"
+                                   Grid.Column="0"/>
+                            <Label Text="60%" FontFamily="Inter" Padding="5" Grid.Column="1"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="1" BorderColor="Black">
+                    <StackLayout Spacing="10">
+                        <Label Text="#22"
+                   HorizontalOptions="End"
+                   FontSize="Medium"
+                   FontFamily="Inter"
+                   Padding="5"/>
+                        <Grid ColumnDefinitions="Auto, *">
+                            <Label Text="60%" FontFamily="Inter" Padding="5" Grid.Column="0"/>
+                            <Label 
+                                HorizontalOptions="FillAndExpand" 
+                                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
+                                FontFamily="Inter"
+                                Padding="5"
+                                Grid.Column="1"
+                            />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
 
         </Grid>
     </ScrollView>

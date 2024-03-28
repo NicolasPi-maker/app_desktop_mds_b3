@@ -9,6 +9,7 @@ namespace MAUI_Score
     public partial class Home : ContentPage
     {
 
+
         public Home(HomePageViewModel viewModel)
         {
             InitializeComponent();
