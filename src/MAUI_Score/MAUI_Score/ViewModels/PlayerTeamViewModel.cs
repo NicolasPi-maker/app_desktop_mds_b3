@@ -42,7 +42,7 @@ namespace MAUI_Score.ViewModels
             get { return _playerService.GetAllPlayers().ToList(); }
         }
 
-        public int NewPlayerId;
+        public int NewPlayerId = 0;
 
         public int SetNewPlayerId
         {
