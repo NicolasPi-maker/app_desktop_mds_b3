@@ -132,7 +132,7 @@ namespace MAUI_Score.ViewModels
 
         private void Submit()
         {
-            if(SetNewPlayerId == 0)
+            if(_playerService.GetPlayerById(NewPlayerId) == null)
             {
                 AddPlayer();
             }
