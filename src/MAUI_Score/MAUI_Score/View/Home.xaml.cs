@@ -2,12 +2,12 @@
 using MAUI_Score.Models;
 using MAUI_Score.Services;
 using MAUI_Score.ViewModels;
+using Microsoft.Maui.Controls;
 
 namespace MAUI_Score
 {
     public partial class Home : ContentPage
     {
-        int count = 10;
 
         public Home(HomePageViewModel viewModel)
         {

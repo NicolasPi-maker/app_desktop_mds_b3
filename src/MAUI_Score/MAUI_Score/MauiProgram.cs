@@ -6,6 +6,8 @@ using MAUI_Score.Interfaces;
 using MAUI_Score.ViewModels;
 using MAUI_Score.Services.ModelServices;
 using MAUI_Score.Services.DataServices;
+using MAUI_Score.View;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace MAUI_Score
 {
@@ -55,6 +57,9 @@ namespace MAUI_Score
 
             builder.Services.AddSingleton<Home>();
             builder.Services.AddSingleton<HomePageViewModel>();
+
+            builder.Services.AddSingleton<PlayerTeamView>();
+            builder.Services.AddSingleton<PlayerTeamViewModel>();
 
 
 #if DEBUG

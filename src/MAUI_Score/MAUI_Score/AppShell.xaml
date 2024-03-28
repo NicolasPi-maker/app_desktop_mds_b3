@@ -17,7 +17,7 @@
         </Tab>
 
         <Tab Title="Create Player and teams">
-            <ShellContent Route="GamesPage" ContentTemplate="{DataTemplate local:Player}" />
+            <ShellContent Route="GamesPage" ContentTemplate="{DataTemplate local:View.PlayerTeamView}" />
         </Tab>
 
     </TabBar>
