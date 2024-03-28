@@ -10,7 +10,7 @@ namespace MAUI_Score.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        private string pseudo { get; set; }
+        public string pseudo { get; set; }
         public Team team { get; set; }
         public float winrate { get; set; }
         public int nbGamesPlayed { get; set; }

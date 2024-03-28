@@ -3,46 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_Score.View.PlayerTeamView"
              xmlns:local="clr-namespace:MAUI_Score.ViewModels">
-    
-    <ScrollView>
-        <Grid HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*" />
-                <ColumnDefinition Width="50*" />
-            </Grid.ColumnDefinitions>
 
-            <!-- Formulaire -->
-            <StackLayout Grid.Column="0" Margin="0,0,10,0">
-                <!-- Group "Player" -->
-                <Label Text="Player" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10" />
-                <Entry x:Name="NameEntry" Placeholder="Name" Margin="0,0,0,10" />
-                <Entry x:Name="PseudoEntry" Placeholder="Pseudo" Margin="0,0,0,10" />
-                <Picker x:Name="TeamPicker" Title="Team" HorizontalOptions="Fill" Margin="0,0,0,10"></Picker>
+    <Grid HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
 
-                <!-- Group "Statistics" -->
-                <Label Text="Statistics" FontAttributes="Bold" FontSize="Large" Margin="0,20,0,10" />
-                <Entry x:Name="MatchesEntry" Placeholder="Number of Matches" Keyboard="Numeric" Margin="0,0,0,10" />
-                <Entry x:Name="WinRateEntry" Placeholder="Win Rate (%)" Keyboard="Numeric" Margin="0,0,0,10" />
-                <Button Text="Valider" HorizontalOptions="Fill" Margin="0,20,0,0" />
-            </StackLayout>
+        <!-- Formulaire -->
+        <StackLayout Grid.Column="0" Margin="0,0,10,0">
+            <!-- Group "Player" -->
+            <Label Text="Joueur" FontAttributes="Bold" FontSize="Large" Margin="0,0,0,10" />
+            <Entry x:Name="NameEntry" Placeholder="Name" Margin="0,0,0,10" Text="{Binding SetNewPayerName}"/>
+            <Entry x:Name="PseudoEntry" Placeholder="Pseudo" Margin="0,0,0,10" Text="{Binding SetNewPlayerPseudo}" />
+            <Picker x:Name="picker"
+                SelectedItem="{Binding SelectedTeam}"
+                Title="Choisissez une équipe"
+                Grid.Row="12"
+                Grid.Column="1"
+                ItemsSource="{Binding TeamList}"
+                ItemDisplayBinding="{Binding name}"
+             />
 
-            <!-- Liste d'utilisateurs -->
-            <StackLayout Grid.Column="1" Margin="10,0,0,0">
-                <ListView ItemsSource="{Binding PlayerList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Margin="10">
-                                    <Label HorizontalOptions="FillAndExpand"  Text="{Binding name}" Margin="0,0,10,0" />
-                                    <Button Text="Modifier" Margin="10,0,10,0" />
-                                    <Button Text="Supprimer" Margin="10,0,10,0" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </Grid>
-        </ScrollView>                       
+            <!-- Group "Statistics" -->
+            <Label Text="Statistics" FontAttributes="Bold" FontSize="Large" Margin="0,20,0,10" />
+            <Entry x:Name="MatchesEntry" Text="{Binding SetNewNbGamesPlayed}" Placeholder="Number of Matches" Keyboard="Numeric" Margin="0,0,0,10" />
+            <Entry x:Name="WinRateEntry" Text="{Binding SetNewWinrate}" Placeholder="Win Rate (%)" Keyboard="Numeric" Margin="0,0,0,10" />
+            <Button Text="Valider" HorizontalOptions="Fill" Margin="0,20,0,0" Command="{Binding SubmitCommand}" />
+        </StackLayout>
+
+        <!-- Liste d'utilisateurs -->
+        <StackLayout Grid.Column="1" Margin="10,0,0,0">
+            <ListView ItemsSource="{Binding PlayerList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="10">
+                                <Label HorizontalOptions="FillAndExpand"  Text="{Binding name}" Margin="0,0,10,0" />
+                                <Button Text="Modifier" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PlayerTeamViewModel}}, Path=SetSelectedPlayerCommand}" CommandParameter="{Binding id}"/> 
+                                <Button Text="Supprimer" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:PlayerTeamViewModel}}, Path=DeletePlayerCommand}" CommandParameter="{Binding id}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Datas" Grid.Row="7" Grid.Column="1" />
+            <Label Text="{Binding SetNewPayerName}" Grid.Row="7" Grid.Column="1" />
+            <Label Text="{Binding SetNewPlayerPseudo}" Grid.Row="7" Grid.Column="1" />
+            <Label Text="{Binding SelectedTeam.name}" Grid.Row="7" Grid.Column="1" />
+            <Label Text="{Binding SetNewNbGamesPlayed}" Grid.Row="7" Grid.Column="1" />
+            <Label Text="{Binding SetNewWinrate}" Grid.Row="7" Grid.Column="1"/>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>
