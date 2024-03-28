@@ -64,8 +64,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\Match.xaml.cs">
-	    <DependentUpon>Match.xaml</DependentUpon>
+	  <Compile Update="View\MatchView.xaml.cs">
+	    <DependentUpon>MatchView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\Player.xaml.cs">
 	    <DependentUpon>Player.xaml</DependentUpon>
@@ -76,7 +76,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\Match.xaml">
+	  <MauiXaml Update="View\MatchView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Player.xaml">

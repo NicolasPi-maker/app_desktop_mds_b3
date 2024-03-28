@@ -27,9 +27,9 @@ namespace MAUI_Score
                 });
 
             string matchDataFilePath = "Datas/Match.json";
-            builder.Services.AddSingleton<DataManagerInterface<Match>>(provider =>
+            builder.Services.AddSingleton<DataManagerInterface<Models.Match>>(provider =>
             {
-                return new DataManager<Match>(matchDataFilePath);
+                return new DataManager<Models.Match>(matchDataFilePath);
             });
             builder.Services.AddSingleton<MatchService>();
 
@@ -60,6 +60,9 @@ namespace MAUI_Score
 
             builder.Services.AddSingleton<PlayerTeamView>();
             builder.Services.AddSingleton<PlayerTeamViewModel>();
+
+            builder.Services.AddSingleton<MatchView>();
+            builder.Services.AddSingleton<MatchViewModel>();
 
 
 #if DEBUG
