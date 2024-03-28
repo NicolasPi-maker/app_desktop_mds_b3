@@ -5,66 +5,84 @@
              x:Class="MAUI_Score.Match">
 
     <ScrollView>
-        <Frame Padding="10" Margin="20" BorderColor="LightGray">
-            <StackLayout Spacing="10">
-                <Entry x:Name="matchIdEntry" Placeholder="ID du match" HorizontalOptions="FillAndExpand" />
-                <Entry x:Name="competitionNameEntry" Placeholder="Nom de la compétition" HorizontalOptions="FillAndExpand" />
-                <DatePicker x:Name="matchDatePicker" HorizontalOptions="FillAndExpand" />
-                <Picker x:Name="gamePicker"
-                    SelectedItem="{Binding SelectedGame}"
-                    Title="Choisir un jeu"
-                    HorizontalOptions="FillAndExpand"
-                    ItemsSource="{Binding GameList}"
-                    ItemDisplayBinding="{Binding name}"/>
+        <StackLayout Spacing="10">
+            <Frame Padding="10" Margin="20" BorderColor="LightGray">
+                <StackLayout Spacing="10">
+                    <Entry x:Name="matchIdEntry" Placeholder="ID du match" HorizontalOptions="FillAndExpand" />
+                    <Entry x:Name="competitionNameEntry" Placeholder="Nom de la compétition" HorizontalOptions="FillAndExpand" />
+                    <DatePicker x:Name="matchDatePicker" HorizontalOptions="FillAndExpand" />
+                    <Picker x:Name="gamePicker"
+                        SelectedItem="{Binding SelectedGame}"
+                        Title="Choisir un jeu"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding GameList}"
+                        ItemDisplayBinding="{Binding name}"/>
 
-                <Grid ColumnSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Picker x:Name="team1Picker"
-                        SelectedItem="{Binding SelectedTeam}"
-                        Title="Équipe 1"
-                        Grid.Column="0"
-                        ItemsSource="{Binding TeamList}"
-                        ItemDisplayBinding="{Binding name}"
-                     />
-                    <Entry x:Name="scoreTeam1Entry" Placeholder="Score équipe 1" Keyboard="Numeric" Grid.Column="1" />
+                        <Picker x:Name="team1Picker"
+                            SelectedItem="{Binding SelectedTeam}"
+                            Title="Équipe 1"
+                            Grid.Column="0"
+                            ItemsSource="{Binding TeamList}"
+                            ItemDisplayBinding="{Binding name}"
+                         />
+                        <Entry x:Name="scoreTeam1Entry" Placeholder="Score équipe 1" Keyboard="Numeric" Grid.Column="1" />
 
-                    <Picker x:Name="team2Picker"
-                        SelectedItem="{Binding SelectedTeam}"
-                        Title="Équipe 2"
-                        Grid.Column="3"
-                        ItemsSource="{Binding TeamList}"
-                        ItemDisplayBinding="{Binding name}"
-                     />
-                    <Entry x:Name="scoreTeam2Entry" Placeholder="Score équipe 2" Keyboard="Numeric" Grid.Column="5" />
-                </Grid>
+                        <Picker x:Name="team2Picker"
+                            SelectedItem="{Binding SelectedTeam}"
+                            Title="Équipe 2"
+                            Grid.Column="3"
+                            ItemsSource="{Binding TeamList}"
+                            ItemDisplayBinding="{Binding name}"
+                         />
+                        <Entry x:Name="scoreTeam2Entry" Placeholder="Score équipe 2" Keyboard="Numeric" Grid.Column="5" />
+                    </Grid>
 
-                <Grid ColumnSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Picker x:Name="player1Picker" Title="Joueur 1" Grid.Column="0" />
-                    <Entry x:Name="scorePlayer1Entry" Placeholder="Score joueur 1" Keyboard="Numeric" Grid.Column="1" />
+                        <Picker x:Name="player1Picker" Title="Joueur 1" Grid.Column="0" />
+                        <Entry x:Name="scorePlayer1Entry" Placeholder="Score joueur 1" Keyboard="Numeric" Grid.Column="1" />
 
-                    <Picker x:Name="player2Picker" Title="Joueur 2" Grid.Column="3" />
-                    <Entry x:Name="scorePlayer2Entry" Placeholder="Score joueur 2" Keyboard="Numeric" Grid.Column="4" />
-                </Grid>
+                        <Picker x:Name="player2Picker" Title="Joueur 2" Grid.Column="3" />
+                        <Entry x:Name="scorePlayer2Entry" Placeholder="Score joueur 2" Keyboard="Numeric" Grid.Column="4" />
+                    </Grid>
 
-                <Editor x:Name="statsEditor" Placeholder="Statistiques additionnelles" HorizontalOptions="FillAndExpand" />
-                <Button Text="Valider" HorizontalOptions="FillAndExpand" Clicked=""/>
-            </StackLayout>
-        </Frame>
+                    <Editor x:Name="statsEditor" Placeholder="Statistiques additionnelles" HorizontalOptions="FillAndExpand" />
+                    <Button Text="Valider" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="10" Margin="20">
+                <StackLayout Grid.Column="1" Margin="10,0,0,0">
+                    <ListView ItemsSource="{Binding MatchList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="10">
+                                        <Label HorizontalOptions="FillAndExpand"  Text="name" Margin="0,0,10,0" />
+                                        <Button Text="Modifier" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MatchViewModel}}, Path=SetSelectedPlayerCommand}" CommandParameter="{Binding id}"/>
+                                        <Button Text="Supprimer" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MatchViewModel}}, Path=DeletePlayerCommand}" CommandParameter="{Binding id}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
     </ScrollView>
-
 </ContentPage>
