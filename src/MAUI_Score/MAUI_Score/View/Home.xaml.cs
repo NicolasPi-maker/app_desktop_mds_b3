@@ -14,5 +14,11 @@ namespace MAUI_Score
             InitializeComponent();
             BindingContext = viewModel;
         }
+
+        void OnScoreTapped(object sender, EventArgs e)
+        {
+            DetailsSection.IsVisible = !DetailsSection.IsVisible;
+        }
+
     }
 }

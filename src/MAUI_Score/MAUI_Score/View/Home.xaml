@@ -6,93 +6,128 @@
 
     <ScrollView>
         <Grid Padding="30"
-          RowDefinitions="Auto, Auto, Auto, Auto"
-          ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto">
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+              ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto">
 
             <Label Text="Tableau des scores"
-               Grid.Row="0"
-               Grid.Column="0"
-               Grid.ColumnSpan="7"
-               FontSize="36"
-               FontFamily="Inter"
-               VerticalOptions="Start"
-               HorizontalOptions="Start" />
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="7"
+                   FontSize="36"
+                   FontFamily="Inter"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start" />
 
             <Button Text="Par joueurs"
-                Grid.Row="1"
-                Grid.Column="0" 
-                BackgroundColor="Purple"
-                TextColor="White"/>
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="Purple"
+                    TextColor="White"/>
             <Button Text="Par équipes"
-                Grid.Row="1"
-                Grid.Column="1"
-                BackgroundColor="Purple"
-                TextColor="White" />
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="Purple"
+                    TextColor="White" />
 
             <SearchBar Placeholder="Rechercher..."
-                   Grid.Row="1"
-                   Grid.Column="2"
-                   Grid.ColumnSpan="2"
-                   HorizontalOptions="FillAndExpand"/>
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2"
+                       HorizontalOptions="FillAndExpand"/>
 
             <Picker Grid.Row="1"
-                Grid.Column="4"
-                HorizontalOptions="End"/>
+                    Grid.Column="4"
+                    HorizontalOptions="End"/>
             <DatePicker Grid.Row="1"
-                    Grid.Column="5"
-                    HorizontalOptions="End"
-                    Format="dd/MM/yyyy" />
+                        Grid.Column="5"
+                        HorizontalOptions="End"
+                        Format="dd/MM/yyyy" />
 
             <BoxView Grid.Row="2"
-                 Grid.Column="0"
-                 Grid.ColumnSpan="7"
-                 HeightRequest="2"
-                 Margin="0,20,0,20"
-                 VerticalOptions="End"/>
+                     Grid.Column="0"
+                     Grid.ColumnSpan="7"
+                     HeightRequest="2"
+                     Margin="0,20,0,20"
+                     VerticalOptions="End"/>
 
-            <Label Text="Date"
-               Grid.Row="3"
-               Grid.Column="0"
-               FontFamily="Inter"
-               HorizontalOptions="Start"/>
-            <Label Text="Team / Joueurs"
-               Grid.Row="3"
-               Grid.Column="2"
-               FontFamily="Inter"
-               HorizontalOptions="Start"/>
-            <Label Text="0"
-               Grid.Row="3"
-               Grid.Column="2"
-               Background="Pink"
-               FontFamily="Inter"
-               Padding="15,10,15,10"
-               Margin="0,0,50,0"
-               HorizontalOptions="Center"/>
-            <Label Text="2"
-               Grid.Row="3"
-               Grid.Column="2"
-               Background="Aquamarine"
-               Padding="15,10,15,10"
-               FontFamily="Inter"
-               Margin="50,0,0,0"
-               HorizontalOptions="Center"/>
-            <Label Text="Team / Joueurs"
-                Grid.Row="3"
-                Grid.Column="2"
-                FontFamily="Inter"
-                Margin="0,0,20,0"
-                HorizontalOptions="End"/>
-            <Label Text="Compétition"
-                Grid.Row="3"
-                Grid.Column="5"
-                FontFamily="Inter"
-                HorizontalOptions="Start"/>
-            <Label Text="Jeu"
-                Grid.Row="3"
-                Grid.Column="7"
-                FontFamily="Inter"
-                HorizontalOptions="End"/>
+            <Frame BorderColor="Black"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="7"
+                   x:Name="ScoreFrame">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                          Tapped="OnScoreTapped"/>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal"
+                             Spacing="100">
+                    <Label Text="Date"
+                           FontFamily="Inter"
+                           HorizontalOptions="Start"/>
+                    <Label Text="Team / Joueurs"
+                           FontFamily="Inter"
+                           HorizontalOptions="Start"/>
+                    <Label Text="0"
+                           BackgroundColor="Pink"
+                           FontFamily="Inter"
+                           Padding="15,10,15,10"
+                           Margin="0,0,0,0"
+                           HorizontalOptions="Center"/>
+                    <Label Text="2"
+                           BackgroundColor="Aquamarine"
+                           Padding="15,10,15,10"
+                           FontFamily="Inter"
+                           Margin="0,0,0,0"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Team / Joueurs"
+                           FontFamily="Inter"
+                           Margin="0,0,20,0"
+                           HorizontalOptions="End"/>
+                    <Label Text="Compétition"
+                           FontFamily="Inter"
+                           HorizontalOptions="End"/>
+                    <Label Text="Jeu"
+                           FontFamily="Inter"
+                           HorizontalOptions="End"/>
+                </StackLayout>
+            </Frame>
+
+            <StackLayout x:Name="DetailsSection"
+                         IsVisible="False"
+                         Grid.Row="4"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="7">
+                <Frame BorderColor="Black">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="100">
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="100">
+                            <Label Text="#22"
+                                   FontSize="Large"
+                                   FontFamily="Inter"
+                                   Padding="5"/>
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
+                                   FontFamily="Inter"
+                                   Padding="5"/>
+                            <Label Text="60% - 40%"
+                                   FontFamily="Inter"
+                                   Padding="5"
+                                   HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="100">
+                            <Label Text="#22"
+                                   FontSize="Large"
+                                   FontFamily="Inter"
+                                   Padding="5"/>
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
+                                   FontFamily="Inter"
+                                   Padding="5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
         </Grid>
     </ScrollView>
-
 </ContentPage>
