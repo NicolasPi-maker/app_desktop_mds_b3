@@ -13,7 +13,7 @@
         </Tab>
 
         <Tab Title="Create Match">
-            <ShellContent Route="PlayersPage" ContentTemplate="{DataTemplate local:Match}" />
+            <ShellContent Route="PlayersPage" ContentTemplate="{DataTemplate local:MatchView}" />
         </Tab>
 
         <Tab Title="Create Player and teams">

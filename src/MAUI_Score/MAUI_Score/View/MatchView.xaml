@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MAUI_Score.ViewModels"
+             x:Class="MAUI_Score.MatchView">
+
+    <ScrollView>
+        <StackLayout Spacing="10">
+            <Frame Padding="10" Margin="20" BorderColor="LightGray">
+                <StackLayout Spacing="10">
+                    <DatePicker x:Name="matchDatePicker" HorizontalOptions="FillAndExpand" Date="{Binding setDate}" />
+                    <Picker x:Name="gamePicker"
+                        SelectedItem="{Binding setGame}"
+                        Title="Choisir un jeu"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding GameList}"
+                        ItemDisplayBinding="{Binding name}"/>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Picker x:Name="team1Picker"
+                            SelectedItem="{Binding setTeam1}"
+                            Title="Équipe 1"
+                            Grid.Column="0"
+                            ItemsSource="{Binding TeamList}"
+                            ItemDisplayBinding="{Binding name}"
+                         />
+                        <Entry x:Name="scoreTeam1Entry" Placeholder="Score équipe 1" Keyboard="Numeric" Grid.Column="1" Text="{Binding team1Score}" />
+
+                        <Picker x:Name="team2Picker"
+                            SelectedItem="{Binding setTeam2}"
+                            Title="Équipe 2"
+                            Grid.Column="3"
+                            ItemsSource="{Binding TeamList}"
+                            ItemDisplayBinding="{Binding name}"
+                         />
+                        <Entry x:Name="scoreTeam2Entry" Placeholder="Score équipe 2" Keyboard="Numeric" Grid.Column="5" Text="{Binding team2Score}" />
+                    </Grid>
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Picker x:Name="player1Picker" Title="Joueur 1" Grid.Column="0" SelectedItem="{Binding setPlayer1}" ItemDisplayBinding="{Binding name}" ItemsSource="{Binding PlayerList}"/>
+                        <Entry x:Name="scorePlayer1Entry" Placeholder="Score joueur 1" Keyboard="Numeric" Grid.Column="1" Text="{Binding team1Score}"/>
+
+                        <Picker x:Name="player2Picker" Title="Joueur 2" Grid.Column="3" SelectedItem="{Binding setPlayer2}" ItemDisplayBinding="{Binding name}" ItemsSource="{Binding PlayerList}"/>
+                        <Entry x:Name="scorePlayer2Entry" Placeholder="Score joueur 2" Keyboard="Numeric" Grid.Column="4" Text="{Binding team2Score}"/>
+                    </Grid>
+
+                    <Editor x:Name="statsEditor" Placeholder="Statistiques additionnelles" HorizontalOptions="FillAndExpand" Text="{Binding setStatistics}" />
+                    <Button Text="Ajouter" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MatchViewModel}}, Path=SubmitCommand}" />
+                </StackLayout>
+            </Frame>
+            <Frame Padding="10" Margin="20">
+                <StackLayout Grid.Column="1" Margin="10,0,0,0">
+                    <ListView ItemsSource="{Binding MatchList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="10">
+                                        <Label HorizontalOptions="FillAndExpand"  Text="name" Margin="0,0,10,0" />
+                                        <Button Text="Modifier" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MatchViewModel}}, Path=SetSelectedPlayerCommand}" CommandParameter="{Binding id}"/>
+                                        <Button Text="Supprimer" Margin="10,0,10,0" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MatchViewModel}}, Path=DeletePlayerCommand}" CommandParameter="{Binding id}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

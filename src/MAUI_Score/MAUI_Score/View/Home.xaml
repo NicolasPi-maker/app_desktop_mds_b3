@@ -108,9 +108,10 @@
                    FontFamily="Inter"
                    Padding="5"/>
                         <Grid ColumnDefinitions="*, Auto">
-                            <Label HorizontalOptions="FillAndExpand" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
-                            FontFamily="Inter"
-                            Padding="5"
+                            <Label HorizontalOptions="FillAndExpand"
+                                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
+                                   FontFamily="Inter"
+                                   Padding="5"
                                    Grid.Column="0"/>
                             <Label Text="60%" FontFamily="Inter" FontSize="Large" Padding="5" Grid.Column="1"/>
                         </Grid>
@@ -125,7 +126,7 @@
                    FontFamily="Inter"
                    Padding="5"/>
                         <Grid ColumnDefinitions="Auto, *">
-                            <Label Text="60%" FontFamily="Inter" FontSize="Large" Margin="0,0,10,0" Padding="5" Grid.Column="0"/>
+                            <Label Text="60%" FontFamily="Inter" Margin="0,0,10,0" Padding="5" Grid.Column="0"/>
                             <Label 
                                 HorizontalOptions="FillAndExpand" 
                                 Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus viverra nisl non consectetur sodales. Aliquam erat volutpat. Sed maximus dapibus malesuada."
