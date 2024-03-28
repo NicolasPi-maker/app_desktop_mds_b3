@@ -3,7 +3,6 @@ using MAUI_Score.Services.ModelServices;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
 
 namespace MAUI_Score.ViewModels
 {
@@ -17,9 +16,7 @@ namespace MAUI_Score.ViewModels
 
         public ICommand DeletePlayerCommand { get; private set; }
 
-        private INavigation _navigation;
-
-        public PlayerTeamViewModel(PlayerService playerService, TeamService teamService, INavigation navigation)
+        public PlayerTeamViewModel(PlayerService playerService, TeamService teamService)
         {
             _playerService = playerService;
             _teamService = teamService;
@@ -33,7 +30,6 @@ namespace MAUI_Score.ViewModels
             _playerService.AddPlayer(new Models.Player(1, "Søren Bjerg", "Bjergsen", team, 0.75f, 10));
             _playerService.AddPlayer(new Models.Player(2, "Martin Larsson", "Rekkles", team, 0.65f, 15));
             _playerService.AddPlayer(new Models.Player(3, "Lee Sang-hyeok", "Faker", team, 0.85f, 20));
-            _navigation = navigation;
         }
 
         public void OnPropertyChanged([CallerMemberName] string name = "")
@@ -62,8 +58,8 @@ namespace MAUI_Score.ViewModels
         public string SetNewPayerName
         {
             get { return NewPlayerName; }
-            set 
-            { 
+            set
+            {
                 NewPlayerName = value;
                 OnPropertyChanged();
             }
@@ -87,8 +83,9 @@ namespace MAUI_Score.ViewModels
 
         public Team NewTeam;
 
-        public Team SelectedTeam {
-            get { return NewTeam;} 
+        public Team SelectedTeam
+        {
+            get { return NewTeam; }
             set
             {
                 NewTeam = value;
@@ -136,7 +133,7 @@ namespace MAUI_Score.ViewModels
 
         private void Submit()
         {
-            if(_playerService.GetPlayerById(NewPlayerId) == null)
+            if (_playerService.GetPlayerById(NewPlayerId) == null)
             {
                 AddPlayer();
             }
@@ -166,10 +163,9 @@ namespace MAUI_Score.ViewModels
             Models.Player playerToRemove = _playerService.GetPlayerById(id);
             if (playerToRemove != null)
             {
-                
+
                 _playerService.DeletePlayer(id);
                 RefreshPlayerList();
-                _navigation.PushAsync(new MainPage());
             }
         }
 
